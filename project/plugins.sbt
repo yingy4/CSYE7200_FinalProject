@@ -4,4 +4,4 @@ addSbtPlugin("org.scalariform" % "sbt-scalariform" % "1.6.0")
 
 //addSbtPlugin("com.beachape" % "sbt-opencv" % "1.5")
 
-addSbtPlugin("org.bytredeco" % "sbt-javacv" % "1.15")
+addSbtPlugin("org.bytedeco" % "sbt-javacv" % "1.15")
