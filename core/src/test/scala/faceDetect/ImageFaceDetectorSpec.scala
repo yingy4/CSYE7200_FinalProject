@@ -32,11 +32,11 @@ class ImageFaceDetectorSpec extends FlatSpec with Matchers {
     equalMat.cols() shouldBe 600
     equalMat.channels() shouldBe 1
   }
-  /*
+
     behavior of "markFace"
 
     it should "work for Golden-Retriever-with-family.jpg" in {
-      //val faceNum = ImageFaceDetector.markFace("Golden-Retriever-with-family.jpg")
-      //faceNum shouldBe 3
-    }*/
+      val faceNum = ImageFaceDetector.markFace("Golden-Retriever-with-family.jpg")
+      faceNum shouldBe 2
+    }
 }

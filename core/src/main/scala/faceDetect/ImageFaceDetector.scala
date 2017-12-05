@@ -12,13 +12,11 @@ import org.bytedeco.javacv.Java2DFrameConverter
 
 import scala.xml.Source
 
-object ImageFaceDetector extends App{
+object ImageFaceDetector {
 
 
   val conv = new Java2DFrameConverter
-  val faceXml = this.getClass.getClassLoader
-    .getResource("haarcascade_frontalface_alt.xml")
-    .getPath
+  val faceXml = this.getClass.getClassLoader.getResource("haarcascade_frontalface_alt.xml").getPath
   val faceCascade = new CascadeClassifier(faceXml)
 
   def readImg(inputImage: String): Mat = {
@@ -59,7 +57,7 @@ object ImageFaceDetector extends App{
     faceRects.size()
   }
 
-  markFace("Golden-Retriever-with-family.jpg")
+  //markFace("Golden-Retriever-with-family.jpg")
 
 
 }
