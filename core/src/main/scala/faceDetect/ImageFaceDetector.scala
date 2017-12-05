@@ -2,6 +2,7 @@ package faceDetect
 
 import java.awt.{Color, Font}
 import java.io.File
+import java.nio.file.Path
 import javax.imageio.ImageIO
 
 import org.bytedeco.javacpp.opencv_core.{Mat, RectVector}
@@ -9,10 +10,15 @@ import org.bytedeco.javacpp.opencv_objdetect.CascadeClassifier
 import org.bytedeco.javacpp.{opencv_imgcodecs, opencv_imgproc}
 import org.bytedeco.javacv.Java2DFrameConverter
 
-object ImageFaceDetector {
+import scala.xml.Source
+
+object ImageFaceDetector extends App{
+
 
   val conv = new Java2DFrameConverter
-  val faceXml = this.getClass.getClassLoader.getResource("haarcascade_frontalface_alt.xml").getPath
+  val faceXml = this.getClass.getClassLoader
+    .getResource("haarcascade_frontalface_alt.xml")
+    .getPath
   val faceCascade = new CascadeClassifier(faceXml)
 
   def readImg(inputImage: String): Mat = {
@@ -34,7 +40,7 @@ object ImageFaceDetector {
   }
 
   // mark face
-  def markFace(inputImage: String): Unit = {
+  def markFace(inputImage: String): Long = {
     val mat = readImg(inputImage)
     val equalizedMat = equalHis(greyscale(mat))
     val faceRects = new RectVector()
@@ -50,6 +56,10 @@ object ImageFaceDetector {
     }
     // image: RenderedImage
     ImageIO.write(image, "jpg", new File(inputImage))
+    faceRects.size()
   }
+
+  markFace("Golden-Retriever-with-family.jpg")
+
 
 }
