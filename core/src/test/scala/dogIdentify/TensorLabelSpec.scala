@@ -7,7 +7,7 @@ class TensorLabelSpec extends FlatSpec with Matchers with BeforeAndAfter{
 
   it should "work for Golden-Retriever-with-family.jpg" in {
     val bytes = TensorLabel.jpgToBytes("Golden-Retriever-with-family.jpg")
-    bytes.toList.length shouldBe 52225
+    bytes.toList.head shouldBe -1
   }
 
   behavior of "detectBreed"
