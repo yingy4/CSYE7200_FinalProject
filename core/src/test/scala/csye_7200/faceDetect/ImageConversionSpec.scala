@@ -1,4 +1,4 @@
-package faceDetect
+package csye_7200.faceDetect
 
 import org.bytedeco.javacpp.opencv_imgcodecs
 import org.scalatest.{BeforeAndAfter, FlatSpec, Matchers}

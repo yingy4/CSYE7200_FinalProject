@@ -1,4 +1,4 @@
-package dogIdentify
+package csye_7200.dogIdentify
 
 import org.scalatest.{BeforeAndAfter, FlatSpec, Matchers}
 

@@ -1,4 +1,4 @@
-package dogIdentify
+package csye_7200.dogIdentify
 
 case class Label(label: String, score: Float)
 

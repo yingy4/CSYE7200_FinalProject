@@ -1,4 +1,4 @@
-package dogIdentify
+package csye_7200.dogIdentify
 
 import java.io.{BufferedInputStream, ByteArrayOutputStream}
 import java.net.URL

@@ -1,4 +1,4 @@
-package faceDetect
+package csye_7200.faceDetect
 
 import java.awt.{Color, Font}
 import java.io.File
