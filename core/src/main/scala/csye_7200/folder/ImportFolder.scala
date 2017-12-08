@@ -21,7 +21,15 @@ object ImportFolder extends App{
     test_images
   }
 
+//  case class TestLabel(dogLabel: String, filename: String, humanNum: Int)
+//  def readLabel(filename: String, spark: SparkSession): RDD[TestLabel] = {
+//    val label_list = spark.read.csv(filename).rdd.map(x => TestLabel(x(0).toString,x(1).toString,x(2).toString.toInt))
+//    label_list
+//  }
+
   val test_images = readFromFolder(dirPath, spark)
+//  val faceList = test_images.map(ImageFaceDetector.markFace(_).toInt)
+//  test_images.fold("0")((sum, temp) => (sum.toInt+ImageFaceDetector.markFace(temp).toInt).toString)
   test_images.foreach(ImageFaceDetector.markFace(_))
   test_images.foreach(TensorLabel.detectBreed(_))
 
