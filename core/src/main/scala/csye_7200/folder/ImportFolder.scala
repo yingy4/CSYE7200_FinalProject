@@ -12,7 +12,7 @@ object ImportFolder extends App{
     .master("local[*]")
     .getOrCreate()
 
-  val dirPath = "test_image"
+  val dirPath = "input_test"
 
   def readFromFolder(dirPath:String, spark: SparkSession):RDD[String]= {
     val test_images = spark.sparkContext.wholeTextFiles(dirPath, 5).map(x => x._1)
