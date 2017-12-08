@@ -40,8 +40,9 @@ object TensorLabel {
     // get result of the outputLayer
     val result = provider.run(inputLayer -> imageBytes, outputLayer)
     // get label of the top 5
-    val labels = model.getLabelOf(result.head, 5)
+    val labels = model.getLabelOf(result.head, 3)
     // print out
+    println(inputImage)
     labels foreach println
     // release resources
     provider.close()
