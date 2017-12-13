@@ -1,6 +1,8 @@
 # CSYE7200_FinalProject
 Repo for CSYE7200 Big Data Using Scala Final Project 
+
 Project: Dog Breed Identification
+
 *Group 10: Xin Wen, Shaowen Cui*
 
 
@@ -26,11 +28,14 @@ related code: core/src/main/scala/csye_7200/folder/ImportFolder
 ### Methodology
 ● Data Preprocessing: OpenCV -- Mat, Grey Scale, Equalize Histogram  
 ● Model Re-Training: CNN (Convolutional Neural Network) based on Tensorflow
+
 ● Dog Breed Identification: CNN
 
 ### Reference
 ● https://github.com/lloydmeta/scala-akka-cv-part1
+
 ● https://github.com/mskimm/tensorflow-scala
+
 ● https://github.com/googlecodelabs/tensorflow-for-poets-2
 
 [![CircleCI](https://circleci.com/gh/cicioutofspace/CSYE7200_FinalProject/tree/master.svg?style=svg)](https://circleci.com/gh/cicioutofspace/CSYE7200_FinalProject/tree/master)
