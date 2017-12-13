@@ -5,13 +5,12 @@ import org.apache.spark.{SparkConf, SparkContext}
 import org.scalatest.{BeforeAndAfter, FlatSpec, Matchers}
 
 class ImportFolderSpec extends FlatSpec with Matchers with BeforeAndAfter{
-  private var spark: SparkSession = _
+  implicit var spark: SparkSession = _
 
   before {
-    //sc = new SparkContext(new SparkConf().setAppName("FolderImage").setMaster("local[*]"))
     spark = SparkSession
       .builder()
-      .appName("FolderImage")
+      .appName("FolderTest")
       .master("local[*]")
       .getOrCreate()
   }
@@ -24,7 +23,13 @@ class ImportFolderSpec extends FlatSpec with Matchers with BeforeAndAfter{
 
   behavior of "readFromFolder"
   it should "work for test_image csye_7200.folder" in {
-    val imgs = ImportFolder.readFromFolder("test_image", spark)
+    val imgs = ImportFolder.readFromFolder("test_image")
     imgs.take(1).head should (include("Golden-Retriever-with-family.jpg"))
+  }
+
+  behavior of "testFolder"
+  it should "work for test_image csye_7200.folder" in {
+    val filename = ImportFolder.testFolder("test_image").collect().head._1
+    filename shouldBe "Golden-Retriever-with-family.jpg"
   }
 }

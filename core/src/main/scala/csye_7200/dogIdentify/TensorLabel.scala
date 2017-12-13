@@ -27,7 +27,7 @@ object TensorLabel {
     jpgAsBytes
   }
 
-  def detectBreed(inputImage: String):String = {
+  def detectBreed(inputImage: String):Seq[Label] = {
     val imageBytes = jpgToBytes(inputImage)
     // define the model
     val model = new InceptionV3("model")
@@ -46,6 +46,10 @@ object TensorLabel {
     labels foreach println
     // release resources
     provider.close()
-    labels.head.label
+    labels
+  }
+
+  def checkCorrect(res:(String, Seq[Label])): Boolean = {
+    res._2.map(x=>x.label.replace(" ","_")).contains(res._1)
   }
 }
