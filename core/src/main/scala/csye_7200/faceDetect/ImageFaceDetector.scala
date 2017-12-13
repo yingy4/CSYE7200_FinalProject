@@ -1,19 +1,19 @@
 package csye_7200.faceDetect
 
-import java.awt.{Color, Font}
+import java.awt.{ Color, Font }
 import java.io.File
 import java.nio.file.Path
 import javax.imageio.ImageIO
 
-import org.bytedeco.javacpp.opencv_core.{Mat, RectVector}
+import org.bytedeco.javacpp.opencv_core
+import org.bytedeco.javacpp.opencv_core.{ Mat, RectVector }
 import org.bytedeco.javacpp.opencv_objdetect.CascadeClassifier
-import org.bytedeco.javacpp.{opencv_imgcodecs, opencv_imgproc}
+import org.bytedeco.javacpp.{ opencv_imgcodecs, opencv_imgproc }
 import org.bytedeco.javacv.Java2DFrameConverter
 
 import scala.xml.Source
 
 object ImageFaceDetector {
-
 
   val conv = new Java2DFrameConverter
   val faceXml = this.getClass.getClassLoader.getResource("haarcascade_frontalface_alt.xml").getPath
@@ -39,10 +39,12 @@ object ImageFaceDetector {
 
   // mark face
   def markFace(inputImage: String): Long = {
+    print(inputImage)
     val mat = readImg(inputImage)
     val equalizedMat = equalHis(greyscale(mat))
     val faceRects = new RectVector()
     faceCascade.detectMultiScale(equalizedMat, faceRects)
+    //faceCascade.detectMultiScale(equalizedMat,faceRects,1.1,3,0,new opencv_core.Size(), new opencv_core.Size())
     val image = conv.getBufferedImage(ImageConversion.toFrame(mat))
     val graphics = image.getGraphics
     graphics.setColor(Color.RED)
@@ -58,6 +60,5 @@ object ImageFaceDetector {
   }
 
   //markFace("Golden-Retriever-with-family.jpg")
-
 
 }
