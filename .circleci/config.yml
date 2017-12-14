@@ -43,8 +43,11 @@ jobs:
       - run: cat /dev/null | sbt clean coverage test
       # generate test coverage report
       - run: cat /dev/null | sbt coverageReport
+      - run: mkdir -p /home/circleci/CSYE7200_FinalProject/target/scala-2.11/coverage-report
       - run: mkdir -p /home/circleci/CSYE7200_FinalProject/target/scala-2.11/scoverage-report
       - run: cp /home/circleci/CSYE7200_FinalProject/core/target/scala-2.11/scoverage-report/scoverage.xml /home/circleci/CSYE7200_FinalProject/target/scala-2.11/scoverage-report/scoverage.xml
+      - run: cp /home/circleci/CSYE7200_FinalProject/core/target/scala-2.11/scoverage-report/index.html /home/circleci/CSYE7200_FinalProject/target/scala-2.11/scoverage-report/index.html
+      - run: cp /home/circleci/CSYE7200_FinalProject/core/target/scala-2.11/coverage-report/cobertura.xml /home/circleci/CSYE7200_FinalProject/target/scala-2.11/coverage-report/cobertura.xml
       # upload report to codacy
       - run: cat /dev/null | sbt codacyCoverage
       
